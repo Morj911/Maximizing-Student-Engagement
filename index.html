@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maximizing Student Engagement Seminar Registration</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', Arial, sans-serif;
+        }
+        body {
+            background-color: #f8f9fa;
+            color: #202124;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(60, 64, 67, 0.3), 0 4px 8px rgba(60, 64, 67, 0.15);
+            padding: 30px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #dadce0;
+        }
+        h1 {
+            color: #1a73e8;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .description {
+            color: #5f6368;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #dadce0;
+        }
+        .section-title {
+            font-size: 20px;
+            color: #1a73e8;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #202124;
+        }
+        input[type="number"],
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #dadce0;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border 0.2s;
+        }
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border: 2px solid #1a73e8;
+        }
+        .teacher-outline {
+            background-color: #f8f9fa;
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .teacher-header {
+            font-size: 18px;
+            color: #1a73e8;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #dadce0;
+        }
+        .checkbox-group {
+            margin-top: 15px;
+        }
+        .checkbox-item {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .checkbox-item input {
+            margin-right: 10px;
+        }
+        button {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        button:hover {
+            background-color: #1967d2;
+        }
+        .confirmation {
+            background-color: #e6f4ea;
+            border: 1px solid #34a853;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            display: none;
+        }
+        .required {
+            color: #d93025;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Maximizing Student Engagement Seminar</h1>
+            <p class="description">Register for our upcoming seminars across various provinces. Our admins will email you the seat reservation number after October 10th.</p>
+        </header>
+
+        <form id="seminarForm" action="https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec" method="POST">
+            <div class="section">
+                <h2 class="section-title">School Information</h2>
+                
+                <div class="form-group">
+                    <label for="schoolName">School Name <span class="required">*</span></label>
+                    <input type="text" id="schoolName" name="schoolName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="numTeachers">How many teachers would you like to register in the Maximizing Student Engagement Seminar? (Maximum of 3) <span class="required">*</span></label>
+                    <input type="number" id="numTeachers" name="numTeachers" min="1" max="3" required>
+                </div>
+            </div>
+
+            <div id="teachersContainer">
+                <!-- Dynamic teacher sections will appear here -->
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">Seminar Details</h2>
+                
+                <div class="form-group">
+                    <label for="province">Province <span class="required">*</span></label>
+                    <select id="province" name="province" required>
+                        <option value="">Select your province</option>
+                        <option value="Bangkok">Bangkok</option>
+                        <option value="Nakhon Pathom">Nakhon Pathom</option>
+                        <option value="Nonthaburi">Nonthaburi</option>
+                        <option value="Pathum Thani">Pathum Thani</option>
+                        <option value="Samut Prakan">Samut Prakan</option>
+                        <option value="Samut Sakhon">Samut Sakhon</option>
+                        <option value="Ang Thong">Ang Thong</option>
+                        <option value="Chainat">Chainat</option>
+                        <option value="Lopburi">Lopburi</option>
+                        <option value="Phra Nakhon Si Ayutthaya">Phra Nakhon Si Ayutthaya</option>
+                        <option value="Saraburi">Saraburi</option>
+                        <option value="Singburi">Singburi</option>
+                        <option value="Chachoengsao">Chachoengsao</option>
+                        <option value="Chanthaburi">Chanthaburi</option>
+                        <option value="Chonburi">Chonburi</option>
+                        <option value="Nakhon Nayok">Nakhon Nayok</option>
+                        <option value="Prachinburi">Prachinburi</option>
+                        <option value="Rayong">Rayong</option>
+                        <option value="Sa Kaeo">Sa Kaeo</option>
+                        <option value="Trat">Trat</option>
+                        <option value="Amnat Charoen">Amnat Charoen</option>
+                        <option value="Bueng Kan">Bueng Kan</option>
+                        <option value="Buri Ram">Buri Ram</option>
+                        <option value="Chaiyaphum">Chaiyaphum</option>
+                        <option value="Kalasin">Kalasin</option>
+                        <option value="Khon Kaen">Khon Kaen</option>
+                        <option value="Loei">Loei</option>
+                        <option value="Maha Sarakham">Maha Sarakham</option>
+                        <option value="Mukdahan">Mukdahan</option>
+                        <option value="Nakhon Phanom">Nakhon Phanom</option>
+                        <option value="Nakhon Ratchasima">Nakhon Ratchasima</option>
+                        <option value="Nong Bua Lamphu">Nong Bua Lamphu</option>
+                        <option value="Nong Khai">Nong Khai</option>
+                        <option value="Roi Et">Roi Et</option>
+                        <option value="Sakon Nakhon">Sakon Nakhon</option>
+                        <option value="Si Saket">Si Saket</option>
+                        <option value="Surin">Surin</option>
+                        <option value="Ubon Ratchathani">Ubon Ratchathani</option>
+                        <option value="Udon Thani">Udon Thani</option>
+                        <option value="Yasothon">Yasothon</option>
+                        <option value="Chiang Mai">Chiang Mai</option>
+                        <option value="Chiang Rai">Chiang Rai</option>
+                        <option value="Kamphaeng Phet">Kamphaeng Phet</option>
+                        <option value="Lampang">Lampang</option>
+                        <option value="Lamphun">Lamphun</option>
+                        <option value="Mae Hong Son">Mae Hong Son</option>
+                        <option value="Nakhon Sawan">Nakhon Sawan</option>
+                        <option value="Nan">Nan</option>
+                        <option value="Phayao">Phayao</option>
+                        <option value="Phetchabun">Phetchabun</option>
+                        <option value="Phichit">Phichit</option>
+                        <option value="Phitsanulok">Phitsanulok</option>
+                        <option value="Phrae">Phrae</option>
+                        <option value="Sukhothai">Sukhothai</option>
+                        <option value="Tak">Tak</option>
+                        <option value="Uthai Thani">Uthai Thani</option>
+                        <option value="Uttaradit">Uttaradit</option>
+                        <option value="Chumphon">Chumphon</option>
+                        <option value="Krabi">Krabi</option>
+                        <option value="Nakhon Si Thammarat">Nakhon Si Thammarat</option>
+                        <option value="Narathiwat">Narathiwat</option>
+                        <option value="Pattani">Pattani</option>
+                        <option value="Phang Nga">Phang Nga</option>
+                        <option value="Phatthalung">Phatthalung</option>
+                        <option value="Phuket">Phuket</option>
+                        <option value="Ranong">Ranong</option>
+                        <option value="Satun">Satun</option>
+                        <option value="Songkhla">Songkhla</option>
+                        <option value="Surat Thani">Surat Thani</option>
+                        <option value="Trang">Trang</option>
+                        <option value="Yala">Yala</option>
+                        <option value="Kanchanaburi">Kanchanaburi</option>
+                        <option value="Phetchaburi">Phetchaburi</option>
+                        <option value="Prachuap Khiri Khan">Prachuap Khiri Khan</option>
+                        <option value="Ratchaburi">Ratchaburi</option>
+                        <option value="Samut Songkhram">Samut Songkhram</option>
+                        <option value="Suphanburi">Suphanburi</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Event Dates and Venue (Select all that apply) <span class="required">*</span></label>
+                    <div class="checkbox-group" id="eventDates">
+                        <!-- Event dates will be populated based on province selection -->
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="comments">Comments and Suggestions</label>
+                    <textarea id="comments" name="comments" rows="4" placeholder="Please share any comments or suggestions you might have..."></textarea>
+                </div>
+            </div>
+
+            <button type="submit">Submit Registration</button>
+            
+            <div class="confirmation" id="confirmationMessage">
+                Thank you for your registration! Our admins will email you the seat reservation number after October 10th.
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const numTeachersInput = document.getElementById('numTeachers');
+            const teachersContainer = document.getElementById('teachersContainer');
+            const provinceSelect = document.getElementById('province');
+            const eventDatesContainer = document.getElementById('eventDates');
+            const form = document.getElementById('seminarForm');
+            const confirmationMessage = document.getElementById('confirmationMessage');
+            
+            // Event dates by province based on the Excel file
+            const eventDatesByProvince = {
+                'Bangkok': [
+                    {date: '1 November', venue: 'Swissôtel Bangkok Ratchada'}
+                ],
+                'Nakhon Pathom': [
+                    {date: '20 October', venue: 'TM Land Hotel, Phra Nakhon Si Ayutthaya Province'},
+                    {date: '29 October', venue: 'MIDA GRANDE HOTEL DHAVARAVATI, Nakhon Pathom Province'}
+                ],
+                'Nonthaburi': [
+                    {date: '1 November', venue: 'Swissôtel Bangkok Ratchada'}
+                ],
+                'Pathum Thani': [
+                    {date: '1 November', venue: 'Swissôtel Bangkok Ratchada'}
+                ],
+                'Samut Prakan': [
+                    {date: '1 November', venue: 'Swissôtel Bangkok Ratchada'}
+                ],
+                'Samut Sakhon': [
+                    {date: '20 October', venue: 'TM Land Hotel, Phra Nakhon Si Ayutthaya Province'},
+                    {date: '29 October', venue: 'MIDA GRANDE HOTEL DHAVARAVATI, Nakhon Pathom Province'}
+                ],
+                'Ang Thong': [
+                    {date: '20 October', venue: 'TM Land Hotel, Phra Nakhon Si Ayutthaya Province'},
+                    {date: '29 October', venue: 'MIDA GRANDE HOTEL DHAVARAVATI, Nakhon Pathom Province'}
+                ],
+                'Chainat': [
+                    {date: '20 October', venue: 'TM Land Hotel, Phra Nakhon Si Ayutthaya Province'},
+                    {date: '29 October', venue: 'MIDA GRANDE HOTEL DHAVARAVATI, Nakhon Pathom Province'},
+                    {date: '24 October', venue: 'The Imperial Hotel and Convention Centre Phitsanulok'}
+                ],
+                'Lopburi': [
+                    {date: '20 October', venue: 'TM Land Hotel, Phra Nakhon Si Ayutthaya Province'},
+                    {date: '29 October', venue: 'MIDA GRANDE HOTEL DHAVARAVATI, Nakhon Pathom Province'},
+                    {date: '21 October', venue: 'The imperial Hotel Convention Center Korat, Nakhon Ratchasima Province'}
+                ],
+                'Phra Nakhon Si Ayutthaya': [
+                    {date: '20 October', venue: 'TM Land Hotel, Phra Nakhon Si Ayutthaya Province'},
+                    {date: '29 October', venue: 'MIDA GRANDE HOTEL DHAVARAVATI, Nakhon Pathom Province'}
+                ],
+                'Saraburi': [
+                    {date: '20 October', venue: 'TM Land Hotel, Phra Nakhon Si Ayutthaya Province'},
+                    {date: '29 October', venue: 'MIDA GRANDE HOTEL DHAVARAVATI, Nakhon Pathom Province'},
+                    {date: '21 October', venue: 'The imperial Hotel Convention Center Korat, Nakhon Ratchasima Province'}
+                ],
+                'Singburi': [
+                    {date: '20 October', venue: 'TM Land Hotel, Phra Nakhon Si Ayutthaya Province'},
+                    {date: '29 October', venue: 'MIDA GRANDE HOTEL DHAVARAVATI, Nakhon Pathom Province'},
+                    {date: '21 October', venue: 'The imperial Hotel Convention Center Korat, Nakhon Ratchasima Province'}
+                ],
+                'Nakhon Nayok': [
+                    {date: '20 October', venue: 'TM Land Hotel, Phra Nakhon Si Ayutthaya Province'},
+                    {date: '29 October', venue: 'MIDA GRANDE HOTEL DHAVARAVATI, Nakhon Pathom Province'},
+                    {date: '21 October', venue: 'The imperial Hotel Convention Center Korat, Nakhon Ratchasima Province'}
+                ],
+                'Uthai Thani': [
+                    {date: '20 October', venue: 'TM Land Hotel, Phra Nakhon Si Ayutthaya Province'},
+                    {date: '29 October', venue: 'MIDA GRANDE HOTEL DHAVARAVATI, Nakhon Pathom Province'},
+                    {date: '24 October', venue: 'The Imperial Hotel and Convention Centre Phitsanulok'}
+                ],
+                'Kanchanaburi': [
+                    {date: '20 October', venue: 'TM Land Hotel, Phra Nakhon Si Ayutthaya Province'},
+                    {date: '29 October', venue: 'MIDA GRANDE HOTEL DHAVARAVATI, Nakhon Pathom Province'}
+                ],
+                'Phetchaburi': [
+                    {date: '29 October', venue: 'MIDA GRANDE HOTEL DHAVARAVATI, Nakhon Pathom Province'}
+                ],
+                'Ratchaburi': [
+                    {date: '20 October', venue: 'TM Land Hotel, Phra Nakhon Si Ayutthaya Province'},
+                    {date: '29 October', venue: 'MIDA GRANDE HOTEL DHAVARAVATI, Nakhon Pathom Province'}
+                ],
+                'Samut Songkhram': [
+                    {date: '20 October', venue: 'TM Land Hotel, Phra Nakhon Si Ayutthaya Province'},
+                    {date: '29 October', venue: 'MIDA GRANDE HOTEL DHAVARAVATI, Nakhon Pathom Province'}
+                ],
+                'Suphanburi': [
+                    {date: '20 October', venue: 'TM Land Hotel, Phra Nakhon Si Ayutthaya Province'},
+                    {date: '29 October', venue: 'MIDA GRANDE HOTEL DHAVARAVATI, Nakhon Pathom Province'}
+                ],
+                'Nakhon Sawan': [
+                    {date: '20 October', venue: 'TM Land Hotel, Phra Nakhon Si Ayutthaya Province'},
+                    {date: '24 October', venue: 'The Imperial Hotel and Convention Centre Phitsanulok'},
+                    {date: '25 October', venue: 'The Empress Chiang Mai Hotel'}
+                ],
+                'Prachuap Khiri Khan': [
+                    {date: '28 October', venue: 'Nipa Garden Hotel, Surat Thani Province'},
+                    {date: '29 October', venue: 'MIDA GRANDE HOTEL DHAVARAVATI, Nakhon Pathom Province'}
+                ],
+                'Amnat Charoen': [
+                    {date: '21 October', venue: 'The imperial Hotel Convention Center Korat, Nakhon Ratchasima Province'},
+                    {date: '22 October', venue: 'Pullman Khon Kaen Hotel, Khonkaen Province'}
+                ],
+                'Bueng Kan': [
+                    {date: '21 October', venue: 'The imperial Hotel Convention Center Korat, Nakhon Ratchasima Province'},
+                    {date: '22 October', venue: 'Pullman Khon Kaen Hotel, Khonkaen Province'}
+                ],
+                'Buri Ram': [
+                    {date: '21 October', venue: 'The imperial Hotel Convention Center Korat, Nakhon Ratchasima Province'},
+                    {date: '22 October', venue: 'Pullman Khon Kaen Hotel, Khonkaen Province'}
+                ],
+                'Chaiyaphum': [
+                    {date: '21 October', venue: 'The imperial Hotel Convention Center Korat, Nakhon Ratchasima Province'},
+                    {date: '22 October', venue: 'Pullman Khon Kaen Hotel, Khonkaen Province'}
+                ],
+                'Kalasin': [
+                    {date: '21 October', venue: 'The imperial Hotel Convention Center Korat, Nakhon Ratchasima Province'},
+                    {date: '22 October', venue: 'Pullman Khon Kaen Hotel, Khonkaen Province'}
+                ],
+                'Khon Kaen': [
+                    {date: '21 October', venue: 'The imperial Hotel Convention Center Korat, Nakhon Ratchasima Province'},
+                    {date: '22 October', venue: 'Pullman Khon Kaen Hotel, Khonkaen Province'}
+                ],
+                'Loei': [
+                    {date: '21 October', venue: 'The imperial Hotel Convention Center Korat, Nakhon Ratchasima Province'},
+                    {date: '22 October', venue: 'Pullman Khon Kaen Hotel, Khonkaen Province'},
+                    {date: '24 October', venue: 'The Imperial Hotel and Convention Centre Phitsanulok'}
+                ],
+                'Maha Sarakham': [
+                    {date: '21 October', venue: 'The imperial Hotel Convention Center Korat, Nakhon Ratchasima Province'},
+                    {date: '22 October', venue: 'Pullman Khon Kaen Hotel, Khonkaen Province'}
+                ],
+                'Mukdahan': [
+                    {date: '21 October', venue: 'The imperial Hotel Convention Center Korat, Nakhon Ratchasima Province'},
+                    {date: '22 October', venue: 'Pullman Khon Kaen Hotel, Khonkaen Province'}
+                ],
+                'Nakhon Phanom': [
+                    {date: '21 October', venue: 'The imperial Hotel Convention Center Korat, Nakhon Ratchasima Province'},
+                    {date: '22 October', venue: 'Pullman Khon Kaen Hotel, Khonkaen Province'}
+                ],
+                'Nakhon Ratchasima': [
+                    {date: '21 October', venue: 'The imperial Hotel Convention Center Korat, Nakhon Ratchasima Province'},
+                    {date: '22 October', venue: 'Pullman Khon Kaen Hotel, Khonkaen Province'}
+                ],
+                'Nong Bua Lamphu': [
+                    {date: '21 October', venue: 'The imperial Hotel Convention Center Korat, Nakhon Ratchasima Province'},
+                    {date: '22 October', venue: 'Pullman Khon Kaen Hotel, Khonkaen Province'}
+                ],
+                'Nong Khai': [
+                    {date: '21 October', venue: 'The imperial Hotel Convention Center Korat, Nakhon Ratchasima Province'},
+                    {date: '22 October', venue: 'Pullman Khon Kaen Hotel, Khonkaen Province'}
+                ],
+                'Roi Et': [
+                    {date: '21 October', venue: 'The imperial Hotel Convention Center Korat, Nakhon Ratchasima Province'},
+                    {date: '22 October', venue: 'Pullman Khon Kaen Hotel, Khonkaen Province'}
+                ],
+                'Sakon Nakhon': [
+                    {date: '21 October', venue: 'The imperial Hotel Convention Center Korat, Nakhon Ratchasima Province'},
+                    {date: '22 October', venue: 'Pullman Khon Kaen Hotel, Khonkaen Province'}
+                ],
+                'Si Saket': [
+                    {date: '21 October', venue: 'The imperial Hotel Convention Center Korat, Nakhon Ratchasima Province'},
+                    {date: '22 October', venue: 'Pullman Khon Kaen Hotel, Khonkaen Province'}
+                ],
+                'Surin': [
+                    {date: '21 October', venue: 'The imperial Hotel Convention Center Korat, Nakhon Ratchasima Province'},
+                    {date: '22 October', venue: 'Pullman Khon Kaen Hotel, Khonkaen Province'}
+                ],
+                'Ubon Ratchathani': [
+                    {date: '21 October', venue: 'The imperial Hotel Convention Center Korat, Nakhon Ratchasima Province'},
+                    {date: '22 October', venue: 'Pullman Khon Kaen Hotel, Khonkaen Province'}
+                ],
+                'Udon Thani': [
+                    {date: '21 October', venue: 'The imperial Hotel Convention Center Korat, Nakhon Ratchasima Province'},
+                    {date: '22 October', venue: 'Pullman Khon Kaen Hotel, Khonkaen Province'}
+                ],
+                'Yasothon': [
+                    {date: '21 October', venue: 'The imperial Hotel Convention Center Korat, Nakhon Ratchasima Province'},
+                    {date: '22 October', venue: 'Pullman Khon Kaen Hotel, Khonkaen Province'}
+                ],
+                'Chiang Mai': [
+                    {date: '24 October', venue: 'The Imperial Hotel and Convention Centre Phitsanulok'},
+                    {date: '25 October', venue: 'The Empress Chiang Mai Hotel'}
+                ],
+                'Chiang Rai': [
+                    {date: '24 October', venue: 'The Imperial Hotel and Convention Centre Phitsanulok'},
+                    {date: '25 October', venue: 'The Empress Chiang Mai Hotel'}
+                ],
+                'Kamphaeng Phet': [
+                    {date: '24 October', venue: 'The Imperial Hotel and Convention Centre Phitsanulok'},
+                    {date: '25 October', venue: 'The Empress Chiang Mai Hotel'}
+                ],
+                'Lampang': [
+                    {date: '24 October', venue: 'The Imperial Hotel and Convention Centre Phitsanulok'},
+                    {date: '25 October', venue: 'The Empress Chiang Mai Hotel'}
+                ],
+                'Lamphun': [
+                    {date: '24 October', venue: 'The Imperial Hotel and Convention Centre Phitsanulok'},
+                    {date: '25 October', venue: 'The Empress Chiang Mai Hotel'}
+                ],
+                'Mae Hong Son': [
+                    {date: '24 October', venue: 'The Imperial Hotel and Convention Centre Phitsanulok'},
+                    {date: '25 October', venue: 'The Empress Chiang Mai Hotel'}
+                ],
+                'Nan': [
+                    {date: '24 October', venue: 'The Imperial Hotel and Convention Centre Phitsanulok'},
+                    {date: '25 October', venue: 'The Empress Chiang Mai Hotel'}
+                ],
+                'Phayao': [
+                    {date: '24 October', venue: 'The Imperial Hotel and Convention Centre Phitsanulok'},
+                    {date: '25 October', venue: 'The Empress Chiang Mai Hotel'}
+                ],
+                'Phetchabun': [
+                    {date: '24 October', venue: 'The Imperial Hotel and Convention Centre Phitsanulok'},
+                    {date: '25 October', venue: 'The Empress Chiang Mai Hotel'}
+                ],
+                'Phichit': [
+                    {date: '24 October', venue: 'The Imperial Hotel and Convention Centre Phitsanulok'},
+                    {date: '25 October', venue: 'The Empress Chiang Mai Hotel'}
+                ],
+                'Phitsanulok': [
+                    {date: '24 October', venue: 'The Imperial Hotel and Convention Centre Phitsanulok'},
+                    {date: '25 October', venue: 'The Empress Chiang Mai Hotel'}
+                ],
+                'Phrae': [
+                    {date: '24 October', venue: 'The Imperial Hotel and Convention Centre Phitsanulok'},
+                    {date: '25 October', venue: 'The Empress Chiang Mai Hotel'}
+                ],
+                'Sukhothai': [
+                    {date: '24 October', venue: 'The Imperial Hotel and Convention Centre Phitsanulok'},
+                    {date: '25 October', venue: 'The Empress Chiang Mai Hotel'}
+                ],
+                'Tak': [
+                    {date: '24 October', venue: 'The Imperial Hotel and Convention Centre Phitsanulok'},
+                    {date: '25 October', venue: 'The Empress Chiang Mai Hotel'}
+                ],
+                'Uttaradit': [
+                    {date: '24 October', venue: 'The Imperial Hotel and Convention Centre Phitsanulok'},
+                    {date: '25 October', venue: 'The Empress Chiang Mai Hotel'}
+                ],
+                'Chumphon': [
+                    {date: '27 October', venue: 'Lee Gardens Plaza Hotel, Songkla Province'},
+                    {date: '28 October', venue: 'Nipa Garden Hotel, Surat Thani Province'}
+                ],
+                'Krabi': [
+                    {date: '27 October', venue: 'Lee Gardens Plaza Hotel, Songkla Province'},
+                    {date: '28 October', venue: 'Nipa Garden Hotel, Surat Thani Province'}
+                ],
+                'Nakhon Si Thammarat': [
+                    {date: '27 October', venue: 'Lee Gardens Plaza Hotel, Songkla Province'},
+                    {date: '28 October', venue: 'Nipa Garden Hotel, Surat Thani Province'}
+                ],
+                'Narathiwat': [
+                    {date: '27 October', venue: 'Lee Gardens Plaza Hotel, Songkla Province'},
+                    {date: '28 October', venue: 'Nipa Garden Hotel, Surat Thani Province'}
+                ],
+                'Pattani': [
+                    {date: '27 October', venue: 'Lee Gardens Plaza Hotel, Songkla Province'},
+                    {date: '28 October', venue: 'Nipa Garden Hotel, Surat Thani Province'}
+                ],
+                'Phang Nga': [
+                    {date: '27 October', venue: 'Lee Gardens Plaza Hotel, Songkla Province'},
+                    {date: '28 October', venue: 'Nipa Garden Hotel, Surat Thani Province'}
+                ],
+                'Phatthalung': [
+                    {date: '27 October', venue: 'Lee Gardens Plaza Hotel, Songkla Province'},
+                    {date: '28 October', venue: 'Nipa Garden Hotel, Surat Thani Province'}
+                ],
+                'Phuket': [
+                    {date: '27 October', venue: 'Lee Gardens Plaza Hotel, Songkla Province'},
+                    {date: '28 October', venue: 'Nipa Garden Hotel, Surat Thani Province'}
+                ],
+                'Ranong': [
+                    {date: '27 October', venue: 'Lee Gardens Plaza Hotel, Songkla Province'},
+                    {date: '28 October', venue: 'Nipa Garden Hotel, Surat Thani Province'}
+                ],
+                'Satun': [
+                    {date: '27 October', venue: 'Lee Gardens Plaza Hotel, Songkla Province'},
+                    {date: '28 October', venue: 'Nipa Garden Hotel, Surat Thani Province'}
+                ],
+                'Songkhla': [
+                    {date: '27 October', venue: 'Lee Gardens Plaza Hotel, Songkla Province'},
+                    {date: '28 October', venue: 'Nipa Garden Hotel, Surat Thani Province'}
+                ],
+                'Surat Thani': [
+                    {date: '27 October', venue: 'Lee Gardens Plaza Hotel, Songkla Province'},
+                    {date: '28 October', venue: 'Nipa Garden Hotel, Surat Thani Province'}
+                ],
+                'Trang': [
+                    {date: '27 October', venue: 'Lee Gardens Plaza Hotel, Songkla Province'},
+                    {date: '28 October', venue: 'Nipa Garden Hotel, Surat Thani Province'}
+                ],
+                'Yala': [
+                    {date: '27 October', venue: 'Lee Gardens Plaza Hotel, Songkla Province'},
+                    {date: '28 October', venue: 'Nipa Garden Hotel, Surat Thani Province'}
+                ],
+                'Chachoengsao': [
+                    {date: '30 October', venue: 'New Travellodge Hotel, Chantaburi Province'},
+                    {date: '31 October', venue: 'Centara Life Maris Resort Jomtien Pattaya, Chonburi Province'}
+                ],
+                'Chanthaburi': [
+                    {date: '30 October', venue: 'New Travellodge Hotel, Chantaburi Province'},
+                    {date: '31 October', venue: 'Centara Life Maris Resort Jomtien Pattaya, Chonburi Province'}
+                ],
+                'Chonburi': [
+                    {date: '30 October', venue: 'New Travellodge Hotel, Chantaburi Province'},
+                    {date: '31 October', venue: 'Centara Life Maris Resort Jomtien Pattaya, Chonburi Province'}
+                ],
+                'Prachinburi': [
+                    {date: '30 October', venue: 'New Travellodge Hotel, Chantaburi Province'},
+                    {date: '31 October', venue: 'Centara Life Maris Resort Jomtien Pattaya, Chonburi Province'}
+                ],
+                'Rayong': [
+                    {date: '30 October', venue: 'New Travellodge Hotel, Chantaburi Province'},
+                    {date: '31 October', venue: 'Centara Life Maris Resort Jomtien Pattaya, Chonburi Province'}
+                ],
+                'Sa Kaeo': [
+                    {date: '30 October', venue: 'New Travellodge Hotel, Chantaburi Province'},
+                    {date: '31 October', venue: 'Centara Life Maris Resort Jomtien Pattaya, Chonburi Province'}
+                ],
+                'Trat': [
+                    {date: '30 October', venue: 'New Travellodge Hotel, Chantaburi Province'},
+                    {date: '31 October', venue: 'Centara Life Maris Resort Jomtien Pattaya, Chonburi Province'}
+                ]
+            };
+            
+            // Update teacher sections based on number input
+            numTeachersInput.addEventListener('change', updateTeacherSections);
+            
+            // Update event dates based on province selection
+            provinceSelect.addEventListener('change', updateEventDates);
+            
+            // Form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Simple form validation
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+                
+                // Submit to Google Apps Script
+                fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.result === 'success') {
+                        confirmationMessage.style.display = 'block';
+                        form.reset();
+                        teachersContainer.innerHTML = '';
+                        window.scrollTo(0, document.body.scrollHeight);
+                    } else {
+                        alert('There was an error submitting your registration. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('There was an error submitting your registration. Please try again.');
+                });
+            });
+            
+            function updateTeacherSections() {
+                const numTeachers = parseInt(numTeachersInput.value) || 0;
+                teachersContainer.innerHTML = '';
+                
+                if (numTeachers > 0) {
+                    const teacherSection = document.createElement('div');
+                    teacherSection.className = 'section';
+                    teacherSection.innerHTML = `<h2 class="section-title">Teacher Information</h2>`;
+                    teachersContainer.appendChild(teacherSection);
+                    
+                    for (let i = 1; i <= numTeachers; i++) {
+                        const teacherOutline = document.createElement('div');
+                        teacherOutline.className = 'teacher-outline';
+                        teacherOutline.innerHTML = `
+                            <h3 class="teacher-header">Teacher ${i}</h3>
+                            <div class="form-group">
+                                <label for="teacherName${i}">Full Name <span class="required">*</span></label>
+                                <input type="text" id="teacherName${i}" name="teacherName${i}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="teacherEmail${i}">Email Address <span class="required">*</span></label>
+                                <input type="email" id="teacherEmail${i}" name="teacherEmail${i}" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="teacherMobile${i}">Mobile Number <span class="required">*</span></label>
+                                <input type="tel" id="teacherMobile${i}" name="teacherMobile${i}" required>
+                            </div>
+                        `;
+                        teacherSection.appendChild(teacherOutline);
+                    }
+                }
+            }
+            
+            function updateEventDates() {
+                const province = provinceSelect.value;
+                eventDatesContainer.innerHTML = '';
+                
+                if (!province) return;
+                
+                const events = eventDatesByProvince[province] || [];
+                
+                if (events.length === 0) {
+                    eventDatesContainer.innerHTML = '<p>No events available for this province.</p>';
+                    return;
+                }
+                
+                events.forEach((event, index) => {
+                    const checkboxItem = document.createElement('div');
+                    checkboxItem.className = 'checkbox-item';
+                    checkboxItem.innerHTML = `
+                        <input type="checkbox" id="event${index}" name="events" value="${event.date} - ${event.venue}" required>
+                        <label for="event${index}">${event.date} - ${event.venue}</label>
+                    `;
+                    eventDatesContainer.appendChild(checkboxItem);
+                });
+            }
+            
+            // Initialize event dates with default options
+            updateEventDates();
+        });
+    </script>
+</body>
+</html>
